@@ -1,7 +1,6 @@
 package controll;
-
-
 import entidade.Produto;
+import java.util.Scanner;
 
 public class ControlProdutoArray {
 	
@@ -115,22 +114,58 @@ public class ControlProdutoArray {
 	}
 
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 		System.out.println("|-----------------------------------------|");
 		System.out.println("<BEM VINDO AO SEU CARRINHO DE COMPRAS!>");
 		System.out.println("essa é sua lista de itens em seu carrinho");
 		System.out.println("|----------------------------------------------------|");
-		Produto p1 = new Produto(10, "mouse", 1);
-		Produto p2 = new Produto(11, "teclado", 2);
-		Produto p3 = new Produto(12, "caneta", 3);
-		Produto p4 = new Produto(13, "processador", 2);
-		//lembrar de adicionar um choose para o usuario declarar qual ação irá fazer
+		Produto p1 = new Produto(10, "Camisa Naruto", 1);
+		Produto p2 = new Produto(11, "Copo GTAV", 2);
+		Produto p3 = new Produto(12, "Colar One Piece", 3);
+		Produto p4 = new Produto(13, "Camisa Dragon Ball", 2);
+
 		ControlProdutoArray cp = new ControlProdutoArray();
 		cp.adicionarProdutoVazio(10, p1, p2, p3, p4);
+		cp.listarProduto();
+		System.out.println("|----------------------------------------------------|");
+		System.out.println("Selecione uma opçao: ");
+        System.out.println("1 - Adicionar Produto");
+        System.out.println("2 - Remover Produto");
+        System.out.println("3 - Atualizar Produto");
+		System.out.println("|----------------------------------------------------|");
+        int opcao = sc.nextInt();
+		switch (opcao) {
+			case 1:
+				System.out.println("|----------------------------------------------------|");
+				System.out.println("Adicionar Produto.");
+				cp.adicionarProduto(2, p1, p2);
+				cp.listarProduto();
+				break;
+			case 2:
+				System.out.println("|----------------------------------------------------|");
+				System.out.println("Remover Produto.");
+				cp.removerProduto(new Produto(12, null, null));
+				cp.listarProduto();
+				break;
+			case 3:
+				System.out.println("|----------------------------------------------------|");
+				System.out.println("Atualizar Produto.");
+				cp.atualizarProduto(new Produto(12, "Colar Demon Slayer", 50));
+				cp.listarProduto();
+				break;
+			default:
+				System.out.println("|----------------------------------------------------|");
+				System.out.println("Opção inválida.");
+				break;
+		}
+		//lembrar de adicionar um choose para o usuario declarar qual ação irá fazer
+		
 		//cp.adicionarProduto(2, p1, p2);
 		//cp.removerProduto(new Produto(12, null, null));
 		//cp.atualizarProduto(new Produto(12, "lapis", 50));
-		cp.listarProduto();
+		//cp.listarProduto();
 		System.out.println("|----------------------------------------------------|");
+		sc.close();
 	}
     
 }
